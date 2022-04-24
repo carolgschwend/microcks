@@ -59,7 +59,7 @@ data:
     keycloak.resource=microcks-app
     keycloak.use-resource-role-mappings=true
     keycloak.bearer-only=true
-    keycloak.ssl-required=external
+    keycloak.ssl-required={{ .Values.keycloak.sslRequired }}
     keycloak.disable-trust-manager=true
 
     keycloak.security-constraints[0].authRoles[0]=admin
@@ -195,7 +195,7 @@ data:
       "actionTokenGeneratedByAdminLifespan": 43200,
       "actionTokenGeneratedByUserLifespan": 300,
       "enabled": true,
-      "sslRequired": "external",
+      "sslRequired":"{{ .Values.microcks.realm.sslRequired }}",
       "registrationAllowed": false,
       "registrationEmailAsUsername": false,
       "rememberMe": false,
@@ -411,7 +411,7 @@ data:
     {{ else }}
     %kube.kafka.bootstrap.servers={{ .Values.features.async.kafka.url }}
     %kube.mp.messaging.incoming.microcks-services-updates.bootstrap.servers={{ .Values.features.async.kafka.url }}
-    
+
       {{- if eq .Values.features.async.kafka.authentication.type "SSL" }}
     %kube.kafka.security.protocol=SSL
       {{- if .Values.features.async.kafka.authentication.truststoreSecretRef }}

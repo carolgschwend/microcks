@@ -3,7 +3,7 @@
 This chart bootstraps a new [Microcks](http://microcks.io) application using the [Helm](https://helm.sh) package manager.  
 
 
-The Lab configuration exposes the sslRequired property and defaults to 'none' for both keycloak and microcks realm.
+The **Lab** configuration exposes the sslRequired property and defaults to **'none'** for both keycloak and microcks realm.
 
 
 Resources within this directory should work with Helm version 3+ (which do not need the Tiller server-side component).
@@ -88,7 +88,7 @@ Here are some commands below on how to do that onto a Minikube instance:
 
 ```console
 $ helm repo add strimzi https://strimzi.io/charts/
-$ helm repo add microcks https://github.com/carolgschwend/microcks
+$ helm repo add microcks https://carolgschwend.github.io/microcks.io/helm
 
 
 $ kubectl create namespace microcks

@@ -19,7 +19,7 @@ $ helm repo add microcks https://carolgschwend.github.io/microcks.io/helm
 
 $ kubectl create namespace microcks
 
-$ helm install microcks microcks/microcks —-version 1.5.1-lab --namespace microcks --set microcks.url=microcks.microcks --set keycloak.url=eycloak.microcks --set keycloak.privateUrl=http://microcks-keycloak.microcks.svc.cluster.local:8080/auth --set keycloak.sslRequired=none --set microcks.realm.sslRequired=none  --set appName=microcks
+$ helm install microcks microcks/microcks —-version 1.5.1-lab --namespace microcks --set microcks.url=microcks.microcks --set keycloak.url=keycloak.microcks --set keycloak.privateUrl=http://microcks-keycloak.microcks.svc.cluster.local:8080/auth --set keycloak.sslRequired=none --set microcks.realm.sslRequired=none  --set appName=microcks
   
 NAME: microcks
 LAST DEPLOYED: Mon Oct 04 12:13:32 2021

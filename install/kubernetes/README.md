@@ -1,6 +1,8 @@
 # Microcks
 
-This chart bootstraps a new [Microcks](http://microcks.io) application using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a new Lab [Microcks](http://microcks.io) application using the [Helm](https://helm.sh) package manager.  
+
+The Lab version exposes the sslRequired property and defaults to 'none' for both keycloak and microcks realm.
 
 Resources within this directory should work with Helm version 3+ (which do not need the Tiller server-side component).
 
@@ -149,6 +151,7 @@ The table below describes all the fields of the `values.yaml`, providing informa
 | `microcks`    | `generateCert`     | **Optional**. Whether to generate self-signed certificate or not if no valid `ingressSecretRef` provided. Default is `true` |
 | `microcks`    | `replicas`         | **Optional**. The number of replicas for the Microcks main pod. Default is `1`. |
 | `microcks`    | `image`            | **Optional**. The reference of container image used. Chart comes with its default version. |
+| `microcks`    | `realm.sslRequired`| **Optional**. For Lab configurations. Defaults to none when setting up microcks realm in keycloak.
 | `microcks`    | `serviceType`      | **Optional**. The service type used. Defaults to `ClusterIP`. |
 | `microcks`    | `resources`        | **Optional**. Some resources constraints to apply on Microcks pods. This should be expressed using [Kubernetes syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container). |
 | `microcks`    | `logLevel`         | **Optional**. Allows to tune the verbosity level of logs. Default is `INFO` You can use `DEBUG` for more verbosity or `WARN` for less. |
@@ -158,6 +161,7 @@ The table below describes all the fields of the `values.yaml`, providing informa
 | `keycloak`    | `install`          | **Optional**. Flag for Keycloak installation. Default is `true`. Set to `false` if you want to reuse an existing Keycloak instance. |
 | `keycloak`    | `realm`            | **Optional**. Name of Keycloak realm to use. Should be setup only if `install` is `false` and you want to reuse an existing realm. Default is `microcks`. |
 | `keycloak`    | `url`              | **Mandatory**. The URL of Keycloak install - indeed just the hostname + port part - if it already exists or the one used for exposing Keycloak `Ingress`. |
+| `keycloak`    | `sslRequired`      |  **Optional**. For Lab configurations. Defaults to none when setting up master realm in keycloak.  
 | `keycloak`    | `privateUrl`       | **Optional**. A private URL - a full URL here - used by the Microcks component to internally join Keycloak. This is also known as `backendUrl` in [Keycloak doc](https://www.keycloak.org/docs/latest/server_installation/#_hostname). When specified, the `keycloak.url` is used as `frontendUrl` in Keycloak terms. |
 | `keycloak`    | `ingressSecretRef` | **Optional**. The name of a TLS Secret for securing `Ingress`. If missing, self-signed certificate is generated. |
 | `keycloak`    | `ingressAnnotations`  | **Optional**. A map of annotations that will be added to the `Ingress` for Keycloak pod. If these annotations are triggering a Certificate generation (for example through [cert-mamanger.io](https://cert-manager.io/)). The `generateCert` property should be set to `false`. |

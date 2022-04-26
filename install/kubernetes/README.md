@@ -47,7 +47,7 @@ username and password found into 'microcks-keycloak-admin' secret.
 From the sources cloned locally:
 
 ```console
-$ git clone https://github.com/microcks/microcks
+$ git clone https://github.com/carolgschwend/microcks
 
 $ cd install/kubernetes
 
